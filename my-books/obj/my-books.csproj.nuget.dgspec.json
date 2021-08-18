@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/sitf/Projects/my-books/my-books/my-books.csproj": {}
+    "/Users/sitf/Documents/GitHub/my-books/my-books/my-books.csproj": {}
   },
   "projects": {
-    "/Users/sitf/Projects/my-books/my-books/my-books.csproj": {
+    "/Users/sitf/Documents/GitHub/my-books/my-books/my-books.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/sitf/Projects/my-books/my-books/my-books.csproj",
+        "projectUniqueName": "/Users/sitf/Documents/GitHub/my-books/my-books/my-books.csproj",
         "projectName": "my-books",
-        "projectPath": "/Users/sitf/Projects/my-books/my-books/my-books.csproj",
+        "projectPath": "/Users/sitf/Documents/GitHub/my-books/my-books/my-books.csproj",
         "packagesPath": "/Users/sitf/.nuget/packages/",
-        "outputPath": "/Users/sitf/Projects/my-books/my-books/obj/",
+        "outputPath": "/Users/sitf/Documents/GitHub/my-books/my-books/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/sitf/.config/NuGet/NuGet.Config"
@@ -37,6 +37,26 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.9, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.1.5, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
