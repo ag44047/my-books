@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using AutoMapper;
 using Commander.Data;
+using Commander.Dtos;
 using Commander.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,32 +13,39 @@ namespace Commander.Controllers
     public class CommandsController : ControllerBase
     {
         private readonly ICommanderRepo _repository;
+        private readonly IMapper _mapper;
 
-        public CommandsController(ICommanderRepo repository)
+        public CommandsController(ICommanderRepo repository,IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
         [HttpGet]
-        public ActionResult <IEnumerable<Command>> GetAllComands()
+        public ActionResult <IEnumerable<CommandReadDto>> GetAllComands()
         {
             var itemsList = _repository.GetAllComands();   
 
-            return Ok(itemsList);
+            return Ok(_mapper.Map<IEnumerable<CommandReadDto>>(itemsList));
         }
 
         [HttpGet("{id}")]
-        public ActionResult <Command> GetCommandById(int id)
+        public ActionResult<CommandReadDto> GetCommandById(int id)
         {
             var item =  _repository.getCommandById(id);
+            
+            if(item != null){
+                //mapojm prej itemit ne command read dto, dmth si paremeter e qojm itemin prej ku po vijne te dhenat
+                return Ok(_mapper.Map<CommandReadDto>(item));
+            }
 
-            return Ok(item);
+            return NotFound();
         }
 
         [HttpPost]
-        public ActionResult AddCommand(Command command)
+        public ActionResult AddCommand(CommandCreateDto command)
         {
-          var result = _repository.AddCommand(command);
+          var result = _repository.AddCommand(_mapper.Map<Command>(command));
             if(result){
                 return Ok();
             }else{
